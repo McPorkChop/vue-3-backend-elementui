@@ -1,0 +1,19 @@
+@import "./normalize";
+@import "./element-ui-custom.scss";
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 14px;
+}
+
+.float-left {
+  float: left;
+}
+.float-right {
+  float: right;
+}
+.d-inline-block{
+  display: inline-block;
+}

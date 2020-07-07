@@ -1,0 +1,65 @@
+@import "various";
+.el-submenu {
+  &.is-active.is-opened .el-submenu__title {
+    background-color: $primary-color !important;
+  }
+  .el-menu-item {
+    font-size: 14px;
+    padding-left: 50px !important;
+
+    &.is-active {
+      background-color: rgba($primary-color, 0.2) !important;
+    }
+  }
+}
+.el-input__inner {
+  border-width: 1px !important;
+}
+.el-menu--vertical.aside-submenu {
+  .el-menu--popup {
+    background-color: #344a5f !important;
+  }
+
+  .el-menu-item {
+    color: #fff !important;
+    line-height: 56px !important;
+
+    &:hover {
+      background-color: $primary-color !important;
+    }
+  }
+}
+.aside-menu.el-menu {
+  transition: all 0.2s ease-in-out;
+
+  .aside-submenu.is_opened:hover .el-submenu__title {
+    background-color: $primary-color !important;
+  }
+}
+.el-form--inline {
+  display: flex !important;
+
+  .el-form-item {
+    display: flex !important;
+    flex-flow: nowrap !important;
+
+    .el-form-item__label {
+      white-space: nowrap;
+    }
+    .el-form-item__content {
+      display: flex !important;
+      flex-flow: nowrap;
+    }
+    .el-input {
+      display: inline-block !important;
+    }
+  }
+}
+
+.table-center.el-table {
+  th,
+  td {
+    text-align: center;
+  }
+  th{font-weight: 700;color: #344a5f;}
+}
