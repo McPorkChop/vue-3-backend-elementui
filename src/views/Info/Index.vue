@@ -3,12 +3,9 @@
     <el-form :inline="true" style="margin-bottom:1em">
       <el-form-item label="类型:">
         <el-select placeholder="请选择" v-model="Type">
-          <el-option
-            v-for="item in TypeOptions"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value"
-          ></el-option>
+          <el-option :label="'国际信息'" :value="'1'"></el-option>
+          <el-option :label="'国内信息'" :value="'2'"></el-option>
+          <el-option :label="'社会信息'" :value="'3'"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item label="日期:">
@@ -28,13 +25,9 @@
           v-model="KeywordType"
           class="keyword-type"
         >
-          <el-option
-            v-for="item in KeywordOptions"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value"
-          ></el-option
-        ></el-select>
+          <el-option :label="'ID'" :value="'1'"></el-option>
+          <el-option :label="'标题'" :value="'2'"></el-option>
+        </el-select>
         <el-input
           v-model="Keyword"
           class="keyword"
@@ -88,7 +81,7 @@
           background
           @size-change="handleSizeChange"
           @current-change="handleCurrentChange"
-          :current-page="currentPage4"
+          :current-page="1"
           :page-sizes="[100, 200, 300, 400]"
           :page-size="100"
           layout="total, sizes, prev, pager, next, jumper"
@@ -102,11 +95,12 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import { Info } from "../../types/model/Info";
+import { list } from "../../api/news";
 
 @Component
 export default class Dashboard extends Vue {
-  private Type = 1;
-  private KeywordType = 1;
+  private Type = "1";
+  private KeywordType = "1";
   private Keyword = "";
   private DateTimeRange: Date[] = [];
   private Table: Info[] = [
@@ -117,34 +111,18 @@ export default class Dashboard extends Vue {
       Operator: "alfred"
     }
   ];
-
-  get TypeOptions() {
-    return [
-      {
-        value: 1,
-        label: "国际信息"
-      },
-      {
-        value: 2,
-        label: "国内信息"
-      },
-      {
-        value: 3,
-        label: "社会信息"
-      }
-    ];
-  }
-  get KeywordOptions() {
-    return [
-      { value: 1, label: "ID" },
-      { value: 2, label: "标题" }
-    ];
-  }
   handleSizeChange(val: number) {
     console.log(val);
   }
   handleCurrentChange(val: number) {
     console.log(val);
+  }
+  load() {
+    list({ pageNumber: 0, pageSize: 10 });
+  }
+
+  mounted() {
+    this.load();
   }
 }
 </script>

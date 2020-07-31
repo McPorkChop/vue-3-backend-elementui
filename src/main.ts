@@ -8,7 +8,7 @@ import "./extension/string.extension";
 import "element-ui/lib/theme-chalk/index.css";
 import global from "@/utils/GlobalRegister.ts";
 import "./router/filter";
-import "./extension"
+import "./extension";
 
 Vue.use(ElementUI);
 Vue.use(VueCompositionApi);
